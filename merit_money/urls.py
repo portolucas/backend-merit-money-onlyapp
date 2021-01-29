@@ -20,6 +20,6 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('webapi/', include('webapi.urls')),
+    path('merit_money/', include('merit_money.webapi.urls')),
     path('token-auth/', obtain_jwt_token)
 ]

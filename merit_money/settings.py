@@ -12,12 +12,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import datetime
-import django_heroku
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 
 # Quick-start development settings - unsuitable for production
@@ -47,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webapi',
+    'merit_money',
     'rest_framework',
     'corsheaders',
     'django_filters',
@@ -76,13 +77,13 @@ REST_FRAMEWORK = {
 }
 
 JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'projeto_api.utils.my_jwt_response_handler',
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'merit_money.utils.my_jwt_response_handler',
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=2),
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
 
 }
 
-ROOT_URLCONF = 'projeto_api.urls'
+ROOT_URLCONF = 'merit_money.urls'
 
 TEMPLATES = [
     {
@@ -100,7 +101,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'projeto_api.wsgi.application'
+WSGI_APPLICATION = 'merit_money.wsgi.application'
 
 
 # Database
@@ -159,5 +160,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-# STATIC_URL = '/static/'
-django_heroku.settings(locals())
+STATIC_URL = '/static/'

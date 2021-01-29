@@ -1,4 +1,4 @@
-from webapi.serializers import UserSerializer
+from merit_money.webapi.serializers import UserSerializer
 
 def my_jwt_response_handler(token, user=None, request=None):
     return {
