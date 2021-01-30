@@ -6,10 +6,10 @@ import uuid
 
 
 class Cargo(models.Model):
-    descricao = models.CharField(max_length=50, null=True)
+    descricao = models.CharField(max_length=51, null=True)
 
     def __str__(self):
-        return (self.descricao)
+        return (self.descricao) 
 
 
 class Setor(models.Model):

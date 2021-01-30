@@ -15,7 +15,6 @@ from .serializers import UserSerializer, UserSerializerWithToken
 from django.contrib.auth.models import User
 from .models import Cargo, Setor, Premios, Transacao, TransacaoPremios, Colaborador
 from .serializers import CargoSerializer, SetorSerializer, PremiosSerializer, TransacaoSerializer, TransacaoPremiosSerializer, ColaboradorSerializer
-
 from django.views.decorators.csrf import csrf_exempt  # Create your views here.
 
 
@@ -35,7 +34,8 @@ class SetorViewSet(viewsets.ModelViewSet):
     queryset = Setor.objects.all()
     serializer_class = SetorSerializer
 
-
+@authentication_classes([])
+@permission_classes([])
 class PremiosViewSet(viewsets.ModelViewSet):
 
     queryset = Premios.objects.all()
@@ -84,7 +84,8 @@ class TransacaViewSet(viewsets.ModelViewSet):
 
         return queryset
 
-
+@authentication_classes([])
+@permission_classes([])
 class TransacaoPremiosViewSet(viewsets.ModelViewSet):
     serializer_class = TransacaoPremiosSerializer
     queryset = TransacaoPremios.objects.all()
